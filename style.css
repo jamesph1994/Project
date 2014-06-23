@@ -1,21 +1,119 @@
 
-
-.redborder{
-	border: 3px solid red;
-	padding: 3px 3px 3px 3px;
-	float: left;
-	width: 200px;
-
+#header{
+	display: none;
 }
 
 #container{
-	width: 700px;
+	
 	margin-right: auto;
 	margin-left: auto;
-	background-color: white;
+	background-color: rgba(233, 233, 233, 1);
+	max-width: 700px;
+	border-radius: 51px;
+	min-height: 565px;
 
 }
 
+p{
+	display: none;
+
+}
+
+.redborder{
+	
+	float: left;
+	width: 140px;
+	margin: 6% 1% -2% 3%;
+	text-align: center;
+	min-height: 140px;
+	border-radius: 12px;
+	border: thin solid gray;
+	background: #fff;
+	
+}
+
+#dash{
+	margin: 2% 0% 0% 5%;
+	background: url('images/dash.jpg') no-repeat scroll center transparent;
+}
+
+
+
 #body{
-	background-color: grey;
+	
+	background-color: #AAA8A8;
+	margin-top: 0px;
+} 
+
+#box1{
+
+	background: url('images/watch.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box2{
+
+	background: url('images/insight.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box3{
+
+	background: url('images/sims2.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box4{
+
+	background: url('images/logo1.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box5{
+
+	background: url('images/google.png') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box6{
+
+	background: url('images/calendar.png') no-repeat scroll center transparent;
+	background-color: #fff;
+
+}
+
+#box7{
+
+	background: url('images/email.png') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box8{
+
+	background: url('images/info.png') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box9{
+
+	background: url('images/policy.png') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box10{
+
+	background: url('images/jr.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box11{
+
+	background: url('images/rm.jpg') no-repeat scroll center transparent;
+	background-color: #fff;
+}
+
+#box12{
+
+	background: url('images/news.png') no-repeat scroll center transparent;
+	background-color: #fff;
 }
