@@ -15,9 +15,30 @@
 }
 
 p{
-	display: none;
+	display: none; 
+
 
 }
+
+.redborder a{
+	display: inline-block;
+	height: 100%;		
+	width: 100%;
+
+	
+}
+
+.redborder a:hover {
+ 
+   border: thin solid rgba(78, 78, 78, 1);
+   border-radius: 11px;
+   top: 30px;
+   -
+
+
+}
+
+
 
 .redborder{
 	
@@ -29,17 +50,21 @@ p{
 	border-radius: 12px;
 	border: thin solid gray;
 	background: #fff;
+	height: 140px;
+	position: relative;
 	
 }
 
+
+
 #dash{
 	margin: 2% 0% 0% 5%;
-	background: url('images/dash.jpg') no-repeat scroll center transparent;
+	
 }
 
 
-
-#body{
+      
+ #body{
 	
 	background-color: #AAA8A8;
 	margin-top: 0px;
@@ -49,6 +74,7 @@ p{
 
 	background: url('images/watch.jpg') no-repeat scroll center transparent;
 	background-color: #fff;
+	display: inline-block;
 }
 
 #box2{
@@ -117,3 +143,6 @@ p{
 	background: url('images/news.png') no-repeat scroll center transparent;
 	background-color: #fff;
 }
+
+
+
