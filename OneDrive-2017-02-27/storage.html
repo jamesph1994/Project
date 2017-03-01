@@ -18,11 +18,8 @@
 				console.log("No rooms");
 			} else {
 				for(var i =0; i <db.length; i++){
-					if (db.user[db.user.length - 1].numberRange <= db[db.length -1].price) {
-							var room = db[i];
+					var room = db[i];
 					console.log(room);
-					}
-				
 				}
 			}
 		}
@@ -35,13 +32,9 @@
 		     var db = [];
 			 displayRooms(db);
 			 
-			 var ensuite = new Room( "single", "£40", "available" );
+			 var ensuite = new Room( "single", "£50", "available" );
 			 db.push(ensuite);
-			 var ensuite = new Room( "single", "£60", "not available" );
-			 db.push(ensuite);
-			  var ensuite = new Room( "double", "120", "not available" );
-			 db.push(ensuite);
-			  var ensuite = new Room( "double", "£150", "not available" );
+			 var ensuite = new Room( "single", "£500", "not available" );
 			 db.push(ensuite);
 			 
 			 displayRooms(db);
@@ -71,7 +64,7 @@
   
   
     
-
+  </body>
   
   
  <body  onload = "inIt()">
