@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<div class="navbar">
+				<ul>
+  					<li><a class="header" href="home.html">Home</a></li>
+  					<li><a href="rooms.html">Rooms</a></li>
+  					<li><a href="about.html">About</a></li>
+				</ul>
+	</div>	
+
+	<title>Receipt</title>
+	<h1>Thanks for booking your stay with us. and we will see you soon!</h1>
+
+	<script>
+    
+      // init is called when the webpage has finished loading.  Iterate through the database of members and
+      // create a list of their names (add other information as needed in the workshop).
+      function init() {
+      
+        var listDiv = document.getElementById("list");
+        
+        // Check the database exists (it should, but remember, anyone can clear localStorage!).  Report an error if not found!
+        if (sessionStorage.hotel_db === undefined) {
+        
+          var h = document.createElement("h3");
+          h.innerHTML = "NO MEMBER DATABASE FOUND";
+          listDiv.appendChild(h);
+        }
+        else {
+        
+          // Get member database as a string...
+          var dbString = sessionStorage.hotel_db;
+          
+          // ... and reconstruct the main database object
+          var db = JSON.parse(dbString);
+          
+          
+          if (db.user.length==0) {
+          
+            // If the member array is empty, report no members...
+            var h = document.createElement("h3");
+            h.innerHTML = "No registered members";
+            listDiv.appendChild(h);
+
+            /*
+            <h3>No Registered Members </h3>
+
+            */
+          }
+          else {
+          
+            //check in dates from the array.
+              var checkInList = document.createElement("ul");
+            
+              var checkInEntry = document.createElement("p1");
+              checkInEntry.innerHTML = "Check In Date: " + db.user[db.user.length - 1].checkIn;
+              
+              checkInList.appendChild(checkInEntry);
+
+              //Check Out dates from the array
+              var checkOutList = document.createElement("ul");
+            
+              var checkOutEntry = document.createElement("p1");
+              checkOutEntry.innerHTML = " Check Out Date: " + db.user[db.user.length - 1].checkOut;
+              
+              checkOutList.appendChild(checkOutEntry);
+
+              //Number of guests stored in the array
+              var guestList = document.createElement("ul");
+            
+              var guestEntry = document.createElement("p1");
+              guestEntry.innerHTML = "Number of Guests: " + db.user[db.user.length - 1].numGuests;
+              
+              guestList.appendChild(guestEntry);
+            
+            //printing the last element in each array 
+            listDiv.appendChild(checkInList);
+            listDiv.appendChild(checkOutList);
+            listDiv.appendChild(guestList);
+          }
+        }
+      }
+      
+    </script>
+    
+
+</head>
+
+
+<body onload="init()">
+
+	  <div id="list"></div>
+    <a href="home.html">Main Menu</a>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>storage</title>
+   <meta charset = "UTF-8">
+    <script>
+	
+	function Room( size, price, status){
+				      this.size = size;
+					  this.price = price;
+					  this.status =status;
+				    };
+					
+		function displayRooms(db){
+		
+			if (db.length==0) {
+				console.log("No rooms");
+			} else {
+				for(var i =0; i <db.length; i++){
+					if (db.user[db.user.length - 1].numberRange <= db[db.length -1].price) {
+							var room = db[i];
+					console.log(room);
+					}
+				
+				}
+			}
+		}
+				  
+				  
+	  function inIt(){
+	    if(typeof Storage !== undefined){
+		  console.log("database is undefined");
+			// Actual data
+		     var db = [];
+			 displayRooms(db);
+			 
+			 var ensuite = new Room( "single", "£40", "available" );
+			 db.push(ensuite);
+			 var ensuite = new Room( "single", "£60", "not available" );
+			 db.push(ensuite);
+			  var ensuite = new Room( "double", "120", "not available" );
+			 db.push(ensuite);
+			  var ensuite = new Room( "double", "£150", "not available" );
+			 db.push(ensuite);
+			 
+			 displayRooms(db);
+			
+			 // Encoded as a string data (need to do this to store)
+			 var dbString = JSON.stringify(db);
+	    	 localStorage.setItem('rooms', dbString);
+			
+			// TEST
+			db = [];
+			displayRooms(db);
+				
+			  // Convert stored string BACK TO ACTUAL DATA
+			db = JSON.parse(localStorage.getItem("rooms"));
+			
+			// ONCE BACK AS ACTUAL DATA WORK WITH db AS A NORMAL ARRAY AGAIN
+			displayRooms(db);
+           document.getElementById("room1").innerHTML = localStorage.rooms;
+		
+	    }else 
+		 {
+	      console.log("database is defined");
+	     }
+	}
+	</script>
+  </head>
+  
+  
+    
+
+  
+  
+ <body  onload = "inIt()">
+ 
+ <div id="result">
+    <div id = "room1">
+	
+	</div>
+ </div>
+ </body>
+</html>

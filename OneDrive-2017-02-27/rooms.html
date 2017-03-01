@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+
+	<div class="navbar">
+				<ul>
+  					<li><a class="header" href="home.html">Home</a></li>
+  					<li><a href="rooms.html">Rooms</a></li>
+  					<li><a href="storage.html">receipt test</a></li>
+				</ul>
+	</div>	
+
+	<title>Rooms</title>
+	<h1>Please select the room in which you desire...</h1>
+
+	<script type="text/javascript">
+
+	var addRoom = getElementById("room1");	
+	var priceValue = getElementById("numberRange");
+
+	for (i=0; i<db.Storage.length; i++) {
+
+		if (i <= db.Storage.price.value) {
+
+			var roomList = document.createElement("ul");
+
+
+			var roomPrice = document.createElement("p1");
+			roomPrice.innerHTML = "Room Price: " + db.ensuite[db.ensuite.length];
+
+			roomList.appendChild(roomPrice);
+
+			addRoom.appendChild(roomList);
+
+			
+		}
+
+		else{
+			
+			b.innerHTML = "No Rooms match this criteria, please search again.";
+			addRoom.appendChild(b);
+		}
+	
+	}
+
+	function init() {
+      
+        var newMember = {};
+        
+        // Iterate through each key-value pair in the url string and store in the 'newMember' object declared above
+        window.location.search.substr(1).split('&').forEach(
+        
+          function(item) {
+          
+            let kvPair = item.split('=');
+            newMember[kvPair[0]] = kvPair[1];
+          }
+        );
+          
+        
+        // Add new member...
+        
+        // If the database has been deleted from sessionStorage then re-create it
+        if (sessionStorage.hotel_db === undefined) {
+
+          sessionStorage.hotel_db = JSON.stringify({ user : [] });
+        }
+
+        // Get database string...
+        var dbString = sessionStorage.hotel_db;
+          
+        // ... and reconstruct the main database object
+        var db = JSON.parse(dbString);
+        
+        // Store new member object in members array
+        db.user.push(newMember);
+        
+        // Re-encode member array object as a string
+        dbString = JSON.stringify(db);
+
+        // Store updated database string back into sessionStorage
+        sessionStorage.hotel_db = dbString;
+        
+        // Report the new member has been added successfully
+        document.getElementById("message").innerHTML = 'Element Added Successfully';
+      }
+
+
+	</script>
+	
+
+
+</head>
+
+
+<body onload="init()" action="receipt.html">
+
+	<div id="room1" value="40">
+	
+	</div>	
+
+	
+
+	<h1 id="message"></h1>
+
+</body>
+
+</html>

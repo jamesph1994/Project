@@ -1,0 +1,148 @@
+<!DOCUTYPE html>
+
+	<head>
+
+			<title>Home</title>
+			<meta charset="UTF-8">
+
+			<link rel="stylesheet" type="text/css" href="home.css">
+	
+			
+			<script type="text/javascript">
+
+					function init(){
+
+  					if (sessionStorage.hotel_db === undefined) {
+
+  						console.log("No storage setup")
+
+  						var db = {
+  							user : []
+  							rooms : []
+  						}
+  					};
+
+  					 // Encode object as a string
+         		 var dbString = JSON.stringify(db);
+
+         		 sessionStorage.hotel_db = dbString;
+  				}
+  				
+  				else{
+  					console.log("Already contains storage");
+  				}
+
+			</script>
+
+  			<script type="text/javascript">
+
+  				function currentDate(){
+
+  					var date1Field = document.getElementById("checkInField");
+
+  					var D = new Date();
+
+  					var monthString;
+  					var m = D.getMonth() + 1;
+
+  					if (m < 10) {
+
+  						monthString = '0' + m;
+  					}
+  					else{
+
+  						monthString = m;
+  					}
+
+  					var dateString = D.getFullYear() + "-" + monthString + "-" + D.getDate();
+
+  					date1Field.value = dateString;
+  					date1Field.min = dateString;
+  				}
+
+  				function newDate(){		
+
+					var date1Field = document.getElementById("checkInField");
+					var date2Field = document.getElementById("checkOutField");
+
+					var date1 = new Date(date1Field.value);
+
+					var checkoutDate = new Date(
+					date1.getFullYear(),
+					date1.getMonth(), //January is 0!
+					date1.getDate() +1,
+					date1.getHours(),
+					date1.getMinutes(),
+					date1.getSeconds());
+
+					var monthString;
+					var m =checkoutDate.getMonth() + 1;
+
+					if (m < 10) {
+						monthString = '0' + m;
+					}
+					else{
+						monthString = m;
+					}
+
+					var dateString = checkoutDate.getFullYear() + "-" + monthString + "-" + checkoutDate.getDate();
+
+					checkOutField.min = dateString;
+				}
+
+  				function updateSlider(){
+
+					var value = document.getElementById("numberRange").value;
+					value = Math.min(Math.max(value, 0), 150);
+
+					document.getElementById("numberRange").value = value;
+					document.getElementById("rangeField").value = value;
+				}
+
+				function updatePrice(){
+
+					document.getElementById("numberRange").value = document.getElementById("rangeField").value;
+				}
+
+  			</script>
+		
+	</head>
+
+	<body onload="currentDate()">
+
+		<div class="navbar">
+				<ul>
+  					<li><a class="header" href="home.html">Home</a></li>
+  					<li><a href="rooms.html">Rooms</a></li>
+  					<li><a href="storage.html">About</a></li>
+				</ul>
+		</div>	
+
+		<form name="form" action = "rooms.html" method="get">
+
+			<fieldset>
+
+				<legend>Search for Rooms</legend>
+
+				<label>Check in date: </label> <br>
+				<input type="date" name="checkIn" class="form" id="checkInField"  onchange="newDate()" placeholder="dd/mm/yyyy" required/> <br>
+
+				<label>Check out date: </label> <br>
+				<input type="date" name="checkOut" class="form" id="checkOutField" placeholder="DD/MM/YYYY"  required/> <br>
+
+				<label>Number of Guests: </label> <br>
+				<input type="number" name="numGuests" class="form" id="guestsField" min="1" max="12" value="0"/><br>
+
+				<label>Max Price:</label><br>
+				<input type="number" name="price" id="numberRange" step="5" value="0" min="40" max="150" onchange="updateSlider()">
+				<input type="range" id="rangeField" min="0" max="150" step="5" value="0" oninput="updatePrice()"> <br>
+				<br>
+				<input type="submit" value="submit" id="submitField" href="receipt.html"></input>
+
+			</fieldset>
+
+		</form>
+
+	</body>
+
+</html>
